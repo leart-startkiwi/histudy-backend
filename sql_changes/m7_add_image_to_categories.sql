@@ -1,0 +1,2 @@
+ALTER TABLE categories
+ADD COLUMN icon VARCHAR(255) NOT NULL;

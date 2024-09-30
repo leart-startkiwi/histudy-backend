@@ -1,0 +1,21 @@
+CREATE TABLE question_replies (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id VARCHAR(36) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  reply TEXT,
+  question_id INT,
+  FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE replies_upvotes(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  question_reply_id INT,
+  FOREIGN KEY (question_reply_id) REFERENCES question_replies(id) ON DELETE CASCADE,
+  user_id VARCHAR(36) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
